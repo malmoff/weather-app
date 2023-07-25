@@ -1,8 +1,9 @@
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
   font-family: 'Open Sans', sans-serif;
   background: #222;
@@ -13,7 +14,9 @@ body {
 .card {
   background: #000000d0;
   color: white;
+  flex: 1;
   padding: 2em;
+  padding-bottom: 60px;
   border-radius: 30px;
   width: 100%;
   max-width: 420px;
