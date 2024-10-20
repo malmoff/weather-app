@@ -17,27 +17,25 @@ let weather = {
       })
       .then((data) => this.displayWeather(data));
   },
-  fetchBackgroundImage: function (city) {
-    const pageVal = 1;
-    fetch(
-      `https://api.unsplash.com/search/photos?page=${pageVal}&query=${city}&client_id=${this.unsplashApiKey}&per_page=1`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.results.length > 0) {
-          const imageUrl = data.results[0].urls.regular; // Hämta URL till första bilden
-          document.body.style.backgroundImage = `url(${imageUrl})`;
-        } else {
-          // Fallback om ingen bild hittas
-          document.body.style.backgroundImage = "url('/path/to/default-background.jpg')";
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching background image: ", error);
-        // Fallback vid fel
-        document.body.style.backgroundImage = "url('/path/to/default-background.jpg')";
-      });
-  },
+fetchBackgroundImage: function (city) {
+  const pageVal = 1;
+  fetch(
+    `https://api.unsplash.com/search/photos?page=${pageVal}&query=${city}&client_id=${this.unsplashApiKey}&per_page=10`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.results.length > 0) {
+        // Välj en slumpmässig bild
+        const randomIndex = Math.floor(Math.random() * data.results.length);
+        const imageUrl = data.results[randomIndex].urls.regular;
+        
+        document.body.style.backgroundImage = `url(${imageUrl})`;
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching background image: ", error);
+    });
+}
   displayWeather: function (data) {
     const { name } = data;
     const { icon, description } = data.weather[0];
