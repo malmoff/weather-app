@@ -25,9 +25,8 @@ let weather = {
       .then((response) => response.json())
       .then((data) => {
         if (data.results.length > 0) {
-           // Välj en slumpmässig bild från resultatet
-        const randomIndex = Math.floor(Math.random() * data.results.length);
-        const imageUrl = data.results[randomIndex].urls.regular;
+           const imageUrl = data.results[0].urls.regular;
+          document.body.style.backgroundImage = `url(${imageUrl})`;
         } else {
           // Fallback om ingen bild hittas
           document.body.style.backgroundImage = "url('/path/to/default-background.jpg')";
