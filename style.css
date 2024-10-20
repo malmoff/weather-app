@@ -8,6 +8,9 @@ body {
   font-family: 'Open Sans', sans-serif;
   background: #222;
   background-image: url('https://source.unsplash.com/1600x900/?landscape');
+  background-size: cover; /* Ser till att bilden täcker hela skärmen */
+  background-repeat: no-repeat; /* Förhindrar att bilden upprepas */
+  background-position: center center; /* Centrerar bilden */
   font-size: 120%;
 }
 
